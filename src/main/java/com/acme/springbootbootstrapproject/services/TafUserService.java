@@ -1,7 +1,7 @@
 package com.acme.springbootbootstrapproject.services;
 
 import com.acme.springbootbootstrapproject.entity.Users;
-import com.acme.springbootbootstrapproject.repository.UsersRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;

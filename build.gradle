@@ -1,12 +1,17 @@
 plugins {
-    id 'org.springframework.boot' version '3.0.5' // Match your Spring Boot version
+    id 'org.springframework.boot' version '3.0.5'
     id 'io.spring.dependency-management' version '1.1.0'
     id 'java'
 }
 
 repositories {
-    mavenLocal()
-    maven { url = uri('https://repo.maven.apache.org/maven2/') }
+    mavenCentral()
+}
+
+// Optional: Customize JAR name
+bootJar {
+    archiveFileName = 'TAFDataStore.jar'
+    mainClass = 'com.acme.springbootbootstrapproject.SpringBootBootstrapProjectApplication' // Specify main class here
 }
 
 dependencies {
@@ -25,8 +30,9 @@ version = '0.0.1-SNAPSHOT'
 description = 'spring-boot-bootstrap-project'
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -35,12 +41,4 @@ tasks.withType(JavaCompile).configureEach {
 
 tasks.withType(Javadoc).configureEach {
     options.encoding = 'UTF-8'
-}
-
-publishing {
-    publications {
-        create('maven', MavenPublication) {
-            from components.java
-        }
-    }
 }
